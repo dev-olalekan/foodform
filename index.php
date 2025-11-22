@@ -35,7 +35,9 @@ mysqli_close($conn);
     echo 'Connection error: ' . mysqli_connect_error();
 } */
 
-?>
+// print_r(explode(',', $foods[0]['ingredients']) ) ;
+
+?> 
 
 
 
@@ -53,7 +55,12 @@ mysqli_close($conn);
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title"><?php echo htmlspecialchars($food['title']); ?></h5>
-                        <p class="card-text"><?php echo htmlspecialchars($food['ingredients']); ?></p>
+                       <!--  <p class="card-text"><?php echo htmlspecialchars($food['ingredients']); ?></p> -->
+                        <ul>
+                            <?php foreach (explode(',', $food['ingredients']) as $ing) { ?>
+                                <li><?php echo htmlspecialchars($ing); ?></li>
+                            <?php } ?>
+                        </ul>
                         <a href="#" class="btn btn-primary">More info</a>
                     </div>
                 </div>
