@@ -50,22 +50,29 @@ mysqli_close($conn);
 <div class="container text-center text-success">FOOD MENU</div>
 <div class="container">
     <div class="row">
-        <?php foreach ($foods as $food) { ?>
+        <?php foreach ($foods as $food) : ?>
             <div class="col-6 col-sm-4 d-flex ">
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title"><?php echo htmlspecialchars($food['title']); ?></h5>
                        <!--  <p class="card-text"><?php echo htmlspecialchars($food['ingredients']); ?></p> -->
                         <ul>
-                            <?php foreach (explode(',', $food['ingredients']) as $ing) { ?>
+                            <?php foreach (explode(',', $food['ingredients']) as $ing) : ?>
                                 <li><?php echo htmlspecialchars($ing); ?></li>
-                            <?php } ?>
+                            <?php endforeach; ?>
                         </ul>
                         <a href="#" class="btn btn-primary">More info</a>
                     </div>
                 </div>
             </div>
-        <?php } ?>
+        <?php endforeach;  ?>
+
+        <!-- alt flow syntax -->
+         <?php if(count($foods) >=3 ): ?>
+            <p>There are 3 or more foods</p>
+        <?php else: ?>
+            <p>There are less than 3 foods</p>
+        <?php endif; ?>
     </div>
 </div>
 
